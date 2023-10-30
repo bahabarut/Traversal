@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Misafir Giriş Ekranı</title>
+    <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/traversal/assets/css/style-liberty.css">
+</head>
+<body>
+
+    <section class="w3l-contact" id="contact">
+        <div class="contact-infubd py-5">
+            <div class="container py-lg-3">
+                <div class="contact-grids row justify-content-center">
+                    <div class="col-lg-6 mt-lg-0 mt-5">
+                        <h5 class="mb-2">Giriş Yap</h5>
+                        <form action="https://sendmail.w3layouts.com/submitForm" method="post" class="signin-form">
+                            <div class="input-grids">
+                                <div class="form-group">
+                                    <input type="email" name="w3lSender" id="w3lSender" placeholder="Mail Adresiniz*" class="contact-input" required="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="w3lName" id="w3lName" placeholder="Şifre*" class="contact-input" />
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn-primary">Giriş Yap</button>
+                                <a class="text-muted">Şifremi Unuttum</a> / <a href="/Login/SignUp" class="text-muted"> Bir Hesabınız Yok Mu?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    @await Html.PartialAsync("~/Views/Shared/LayoutPartial/_ScriptsPartial.cshtml")
+</body>
+
+</html>
