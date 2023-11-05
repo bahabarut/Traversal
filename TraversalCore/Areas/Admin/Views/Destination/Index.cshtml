@@ -1,0 +1,39 @@
+﻿@model List<Destination>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card">
+    <h5 class="card-header"><a href="/Admin/Destination/AddDestination" class="btn btn-primary">Yeni Destinasyon</a></h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-sm table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Şehir</th>
+                    <th>Fiyat</th>
+                    <th>Kapasite</th>
+                    <th>Sitede Gör</th>
+                    <th>Güncelle</th>
+                    <th>Sil</th>
+                    <th>Detaylar</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.DestinationID</td>
+                        <td>@item.City</td>
+                        <td>@item.Price</td>
+                        <td>@item.Capacity</td>
+                        <td><a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-sm btn-outline-success">Sitede Gör</a></td>
+                        <td><a href="/Admin/Destination/UpdateDestination/@item.DestinationID" class="btn btn-sm btn-outline-warning">Güncelle</a></td>
+                        <td><a href="/Admin/Destination/DeleteDestination  /@item.DestinationID" class="btn btn-sm btn-outline-danger">Sil</a></td>
+                        <td><a href="#" class="btn btn-sm btn-outline-info">Detaylar</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

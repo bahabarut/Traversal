@@ -44,6 +44,11 @@ namespace BusinessLayer.Concrete
             return _reservationDal.GetListByFilter(filter);
         }
 
+        public List<Reservation> TGetListByFilterWithDestination(Expression<Func<Reservation, bool>> filter)
+        {
+            return _reservationDal.TGetListByFilterWithDestination(filter);
+        }
+
         public void TUpdate(Reservation t)
         {
             _reservationDal.Update(t);

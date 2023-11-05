@@ -1,0 +1,83 @@
+﻿@model AddDestinationViewModel
+@{
+    ViewData["Title"] = "AddDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <!-- Basic -->
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post" enctype="multipart/form-data">
+
+                @* <h5 class="card-header">Basic</h5> *@
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <label for="city" class="form-label">Şehir</label>
+                                <input type="text" class="form-control" asp-for="city" id="city" />
+                                <span class="text-danger" asp-validation-for="city"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="day" class="form-label">Gün</label>
+                                <input type="number" class="form-control" asp-for="day" id="day" />
+                                <span class="text-danger" asp-validation-for="day"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="night" class="form-label">Gece</label>
+                                <input type="number" class="form-control" asp-for="night" id="night" />
+                                <span class="text-danger" asp-validation-for="night"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="price" class="form-label">Fiyat</label>
+                                <input type="number" class="form-control" asp-for="price" id="price" />
+                                <span class="text-danger" asp-validation-for="price"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="capacity" class="form-label">Kapasite</label>
+                                <input type="number" class="form-control" asp-for="capacity" id="capacity" />
+                                <span class="text-danger" asp-validation-for="capacity"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="image" class="form-label">Resim</label>
+                                <input type="file" class="form-control" asp-for="image" id="image" />
+                                <span class="text-danger" asp-validation-for="image"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label for="description" class="form-label">Açıklama</label>
+                                <textarea class="form-control" rows="3" asp-for="description" id="description"></textarea>
+                                <span class="text-danger" asp-validation-for="description"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label for="details1" class="form-label">Detaylar 1</label>
+                                <textarea class="form-control" rows="2" asp-for="details1" id="details1"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label for="details2" class="form-label">Detaylar 2</label>
+                                <textarea class="form-control" rows="2" asp-for="details2" id="details2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
