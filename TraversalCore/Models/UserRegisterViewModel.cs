@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace TraversalCore.Models
 {
@@ -22,5 +23,7 @@ namespace TraversalCore.Models
         [Required(ErrorMessage = "Bu Alan Boş Geçilmez!")]
         [Compare("Password", ErrorMessage = "Şifreler Uyuşmıyor!")]
         public string ConfirmPassword { get; set; }
+        public IFormFile Image { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

@@ -4,6 +4,7 @@ namespace TraversalCore.Areas.Member.Models
 {
     public class UserEditViewModel
     {
+        public int id { get; set; }
         public string name { get; set; }
         public string surname { get; set; }
         public string password { get; set; }

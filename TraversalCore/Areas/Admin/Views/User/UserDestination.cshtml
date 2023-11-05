@@ -1,19 +1,16 @@
-﻿@model List<Destination>
+﻿@model List<Reservation>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "UserDestination";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <div class="card">
-    <h5 class="card-header"><a href="/Admin/Destination/AddDestination" class="btn btn-primary">Yeni Destinasyon</a></h5>
     <div class="table-responsive text-nowrap">
         <table class="table table-sm table-hover table-striped">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Şehir</th>
-                    <th>Fiyat</th>
-                    <th>Kapasite</th>
-                    <th>Sitede Gör</th>
+                    <th>Destinasyon</th>
+                    <th>Tarih</th>
                     <th>Güncelle</th>
                     <th>Sil</th>
                 </tr>
@@ -22,11 +19,9 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.DestinationID</td>
-                        <td>@item.City</td>
-                        <td>@item.Price</td>
-                        <td>@item.Capacity</td>
-                        <td><a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-sm btn-outline-success">Sitede Gör</a></td>
+                        <td>@item.ReservationID</td>
+                        <td>@item.Destination.City - @item.Destination.DayNight</td>
+                        <td>@(((DateTime)item.ReservatioDate).ToString("dd-MMM-yyyy"))</td>
                         <td><a href="/Admin/Destination/UpdateDestination/@item.DestinationID" class="btn btn-sm btn-outline-warning">Güncelle</a></td>
                         <td><a href="/Admin/Destination/DeleteDestination  /@item.DestinationID" class="btn btn-sm btn-outline-danger">Sil</a></td>
                     </tr>
@@ -35,3 +30,4 @@
         </table>
     </div>
 </div>
+

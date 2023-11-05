@@ -1,0 +1,50 @@
+﻿@model UserEditViewModel
+@{
+    ViewData["Title"] = "UpdateUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="row">
+                        <input type="hidden" asp-for="id"/>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="name" class="form-label">Ad</label>
+                                <input type="text" class="form-control" asp-for="name" id="name" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="surname" class="form-label">Soyad</label>
+                                <input type="text" class="form-control" asp-for="surname" id="surname" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="phonenumber" class="form-label">Telefon Numarası</label>
+                                <input type="text" class="form-control" asp-for="phonenumber" id="phonenumber" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="mail" class="form-label">Mail</label>
+                                <input type="text" class="form-control" asp-for="mail" id="mail" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="image" class="form-label">Resim</label>
+                                <input type="file" class="form-control" asp-for="image" id="image" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

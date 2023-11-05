@@ -19,6 +19,11 @@ namespace BusinessLayer.Concrete
             _commentDal = commentDal;
         }
 
+        public List<Comment> GetListWithDestination()
+        {
+            return _commentDal.GetListWithDestination();
+        }
+
         public void TAdd(Comment t)
         {
             _commentDal.Insert(t);
@@ -42,6 +47,11 @@ namespace BusinessLayer.Concrete
         public List<Comment> TGetListByFilter(Expression<Func<Comment, bool>> filter)
         {
             return _commentDal.GetListByFilter(filter);
+        }
+
+        public List<Comment> TGetListByFilterWithDestination(Expression<Func<Comment, bool>> filter)
+        {
+            return _commentDal.TGetListByFilterWithDestination(filter);
         }
 
         public void TUpdate(Comment t)

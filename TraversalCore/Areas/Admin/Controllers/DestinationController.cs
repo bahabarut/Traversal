@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFreamework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -13,12 +14,18 @@ namespace TraversalCore.Areas.Admin.Controllers
     [Route("Admin/[controller]/[action]/{id?}")]
     public class DestinationController : Controller
     {
-        DestinationManager dm = new DestinationManager(new EfDestinaitonDal());
+        private readonly IDestinationService _destinationService;
+
+        public DestinationController(IDestinationService destinationService)
+        {
+            _destinationService = destinationService;
+        }
+
         public IActionResult Index()
         {
 
             TempData["adminBreadcrumb"] = "Destinasyonlar";
-            var values = dm.TGetList();
+            var values = _destinationService.TGetList();
             return View(values);
         }
         [HttpGet]
@@ -55,7 +62,7 @@ namespace TraversalCore.Areas.Admin.Controllers
                     newDes.Image = imageName;
                     newDes.CoverImage = imageName;
                 }
-                dm.TAdd(newDes);
+                _destinationService.TAdd(newDes);
                 return RedirectToAction("Index", "Destination", new { area = "Admin" });
             }
             else
@@ -68,7 +75,7 @@ namespace TraversalCore.Areas.Admin.Controllers
         public IActionResult UpdateDestination(int id)
         {
             TempData["adminBreadcrumb"] = "Destination Düzenle";
-            var val = dm.TGetById(id);
+            var val = _destinationService.TGetById(id);
             var dest = new AddDestinationViewModel()
             {
                 id = val.DestinationID,
@@ -90,7 +97,7 @@ namespace TraversalCore.Areas.Admin.Controllers
             ModelState.Remove("image");
             if (ModelState.IsValid)
             {
-                var val = dm.TGetById(p.id);
+                var val = _destinationService.TGetById(p.id);
                 val.City = p.city;
                 val.Capacity = p.capacity;
                 val.Description = p.description;
@@ -108,7 +115,7 @@ namespace TraversalCore.Areas.Admin.Controllers
                     val.Image = imageName;
                     val.CoverImage = imageName;
                 }
-                dm.TUpdate(val);
+                _destinationService.TUpdate(val);
                 return RedirectToAction("Index", "Destination", new { area = "Admin" });
             }
             else
@@ -119,8 +126,8 @@ namespace TraversalCore.Areas.Admin.Controllers
         }
         public IActionResult DeleteDestination(int id)
         {
-            var val = dm.TGetById(id);
-            dm.TDelete(val);
+            var val = _destinationService.TGetById(id);
+            _destinationService.TDelete(val);
             return RedirectToAction("Index", new { area = "Admin" });
         }
 

@@ -1,0 +1,64 @@
+﻿@model UserRegisterViewModel
+@{
+    ViewData["Title"] = "AddUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="row">
+                        <input type="hidden" asp-for="Password" value="Admin_12345" />
+                        <input type="hidden" asp-for="ConfirmPassword" value="Admin_12345" />
+                        <div class="col-md-4">
+                            <div>
+                                <label for="Name" class="form-label">Ad</label>
+                                <input type="text" class="form-control" asp-for="Name" id="Name" />
+                                <span class="text-danger" asp-validation-for="Name"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="SurName" class="form-label">Soyad</label>
+                                <input type="text" class="form-control" asp-for="SurName" id="SurName" />
+                                <span class="text-danger" asp-validation-for="SurName"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="UserName" class="form-label">Kullanıcı Adı</label>
+                                <input type="text" class="form-control" asp-for="UserName" id="UserName" />
+                                <span class="text-danger" asp-validation-for="UserName"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="PhoneNumber" class="form-label">Telefon Numarası</label>
+                                <input type="text" class="form-control" asp-for="PhoneNumber" id="PhoneNumber" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="Mail" class="form-label">Mail</label>
+                                <input type="text" class="form-control" asp-for="Mail" id="Mail" />
+                                <span class="text-danger" asp-validation-for="Mail"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="Image" class="form-label">Resim</label>
+                                <input type="file" class="form-control" asp-for="Image" id="Image" />
+                                <span class="text-danger" asp-validation-for="Image"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
