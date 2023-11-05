@@ -32,6 +32,9 @@ namespace BusinessLayer.Container
 
             services.AddScoped<ICommentService, CommentManager>();
             services.AddScoped<ICommentDal, EfCommentDal>();
+
+            services.AddScoped<IGuideService, GuideManager>();
+            services.AddScoped<IGuideDal, EfGuideDal>();
         }
     }
 }

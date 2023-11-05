@@ -13,8 +13,10 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TraversalCore.Models;
@@ -31,6 +33,15 @@ namespace TraversalCore
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            //2 loglama kullanýlacak biri output yani derlenme anýnda console yazýlacak diðer ise text dosyasý Output ekraný
+            services.AddLogging(x =>
+            {
+                x.ClearProviders(); //saðlayýcýlar varsa onlaru temizliyoruz çünkü kendi loglarýmýzý kullancaz
+                x.SetMinimumLevel(LogLevel.Debug); //LogLevel altýndaki metotlar log seviyesini belirtiyor (debug den itibaren baþlasýn) gibi 
+                x.AddDebug();
+            });
+
+
             //this code for Identity
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
@@ -50,8 +61,12 @@ namespace TraversalCore
             services.AddMvc();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILoggerFactory loggerFactory)
         {
+            //serilog.extension kütüphanesini kuruyoruz Logs klasörünü kendi oluþturuyor ana dizinde
+            var path = Directory.GetCurrentDirectory();
+            loggerFactory.AddFile($"{path}\\Logs\\Log1.txt");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

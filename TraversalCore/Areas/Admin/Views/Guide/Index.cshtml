@@ -1,0 +1,51 @@
+﻿@model List<Guide>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    img {
+        border-radius: 50%;
+    }
+</style>
+
+<div class="card">
+    <h5 class="card-header"><a href="/Admin/Guide/AddGuide" class="btn btn-primary">Yeni Rehber</a></h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-sm table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Görsel</th>
+                    <th>Ad Soyad</th>
+                    <th>Açıklama</th>
+                    <th>Durum</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.GuideID</td>
+                        <td><img src="~/wwwroot/guideImages/@item.Image" height="50" width="50" /></td>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        @{
+                            if (item.Status)
+                            {
+                                <td><a href="/Admin/Guide/ChangeToPassive/@item.GuideID" class="btn btn-sm btn-outline-danger">Pasifleştir</a></td>
+
+                            }
+                            else
+                            {
+                                <td><a href="/Admin/Guide/ChangeToActive/@item.GuideID" class="btn btn-sm btn-outline-success">Aktifleştir</a></td>
+                            }
+                        }
+                        <td><a href="/Admin/Guide/UpdateGuide/@item.GuideID" class="btn btn-sm btn-outline-warning">Düzenle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
