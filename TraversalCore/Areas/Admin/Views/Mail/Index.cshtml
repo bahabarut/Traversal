@@ -1,0 +1,36 @@
+﻿@model MailRequest
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <label for="ReceiverMail" class="form-label">Alıcının Mail Adresi</label>
+                                <input type="text" class="form-control" asp-for="ReceiverMail" id="ReceiverMail" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="Subject" class="form-label">Konu Başlığı</label>
+                                <input type="text" class="form-control" asp-for="Subject" id="Subject" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="Body" class="form-label">Mesaj İçeriği</label>
+                                <input type="text" class="form-control" asp-for="Body" id="Body" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
