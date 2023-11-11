@@ -1,24 +1,16 @@
-using BusinessLayer.Abstract;
-using BusinessLayer.Concrete;
 using BusinessLayer.Container;
-using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
-using DataAccessLayer.EntityFreamework;
 using EntityLayer.Concrete;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using TraversalCore.Models;
 
 namespace TraversalCore
@@ -48,8 +40,13 @@ namespace TraversalCore
             // end Identity codes
 
             services.ContainerDependencies();
+            services.CustomValidator();
 
-            services.AddControllersWithViews();
+            services.AddAutoMapper(typeof(Startup));
+
+
+            services.AddControllersWithViews().AddFluentValidation();
+
 
             //project level auth process (proje seviyesinde authentication kullanýyoruz)
             services.AddMvc(config =>
@@ -61,7 +58,7 @@ namespace TraversalCore
             services.AddMvc();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             //serilog.extension kütüphanesini kuruyoruz Logs klasörünü kendi oluþturuyor ana dizinde
             var path = Directory.GetCurrentDirectory();

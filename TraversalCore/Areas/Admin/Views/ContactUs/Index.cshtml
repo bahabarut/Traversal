@@ -1,0 +1,36 @@
+﻿@model List<ContactUs>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card">
+    <div class="table-responsive text-nowrap">
+        <table class="table table-sm table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Gönderen</th>
+                    <th>Konu</th>
+                    <th>Tarih</th>
+                    <th>Mesajı Aç</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>@item.ContactUsID</th>
+                        <td>@item.Name - @item.Mail</td>
+                        <td>@item.Subject</td>
+                        <td>@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy hh:mm"))</td>
+                        <td><a href="/Admin/Guide/UpdateGuide/" class="btn btn-sm btn-outline-info">Mesajı Aç</a></td>
+                        <td><a href="/Admin/ContactUs/ChangeToFalse/@item.ContactUsID" class="btn btn-sm btn-outline-danger">Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

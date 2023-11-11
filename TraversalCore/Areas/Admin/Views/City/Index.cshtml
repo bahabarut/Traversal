@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card">
+    <h5 class="card-header">
+        <a href="#" class="btn btn-primary" id="btnGetCities">Şehir Listesi</a>
+        <a href="#" class="btn btn-primary" id="btnGetDestinations">Destinasyonlar Listesi</a>
+
+        <a href="#" class="btn btn-info" id="btnGetCity">Şehir Getir</a>
+
+        <a href="#" class="btn btn-success" id="btnAddCity">Şehir Ekle</a>
+
+        <a href="#" class="btn btn-warning" id="btnEditCity">Şehir Güncelle</a>
+
+        <a href="#" class="btn btn-danger" id="btnDeleteCity">Şehir Sil</a>
+    </h5>
+    <div>
+        <input type="text" class="form-control" id="txtIdCity" placeholder="Id (Sadece üzenleme işleminde girilmelidir ve id ye göre getirirken ve silerken)" />
+        <input type="text" class="form-control" id="txtAddCity" placeholder="Şehir Adı" />
+        <input type="text" class="form-control" id="txtAddCountry" placeholder="Şehir Ülkesi" />
+    </div>
+    <div class="table-responsive text-nowrap" id="contentTable">
+    </div>
+</div>
+
+
+@section AdminScripts{
+    <script>
+        $("#btnGetCities").click(function () {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "GET",
+                url: "/Admin/City/CityList",
+                success: function (func) {
+                    let data = jQuery.parseJSON(func);
+                    console.log(data);
+                    let tableHtml = "<table class='table table-sm table-hover table-striped'> <thead> <th>Şehir Id</th> <th>Şehir</th> <th>Ülke</th> </thead> <tbody>";
+                    for (var i = 0; i < data.length; i++) {
+                        tableHtml += `<tr> <td>${data[i].CityID}</td> <td>${data[i].CityName}</td> <td>${data[i].CityCountry}</td></tr>`;
+                    }
+                    // $.each(data, (index, value) => {
+                    //     tableHtml += `<tr> <td>${value.CityID}</td> <td>${value.CityName}</td> <td>${value.CityCountry}</td></tr>`;
+                    // });
+                    tableHtml += "</tbody> </table>";
+                    $("#contentTable").html(tableHtml);
+                }
+            });
+        });
+
+        $("#btnGetDestinations").click(function () {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "GET",
+                url: "/Admin/City/DestinationList",
+                success: function (func) {
+                    let data = jQuery.parseJSON(func);
+                    console.log(data);
+                    let tableHtml = "<table class='table table-sm table-hover table-striped'> <thead> <th>Şehir</th> <th>Süre</th> <th>Fiyat</th> <th>Kapasite</th></thead> <tbody>";
+                    // for (var i = 0; i < data.length; i++) {
+                    //     tableHtml += `<tr> <td>${data[i].CityID}</td> <td>${data[i].CityName}</td> <td>${data[i].CityCountry}</td></tr>`;
+                    // }
+                    $.each(data, (index, value) => {
+                        tableHtml += `<tr> <td>${value.City}</td> <td>${value.DayNight}</td> <td>${value.Price} ₺</td> <td>${value.Capacity}</td></tr>`;
+                    });
+                    tableHtml += "</tbody> </table>";
+                    $("#contentTable").html(tableHtml);
+                }
+            });
+        });
+        $("#btnGetCity").click(() => {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "GET",
+                url: "/Admin/City/CityById",
+                data: { id: $("#txtIdCity").val() },
+                success: (func) => {
+                    let data = jQuery.parseJSON(func);
+                    console.log(data);
+                    console.log(func);
+                    if (data == null) {
+                        $("#contentTable").html("<h1 class='text-center'>Bu id ye ait kayıt bulunamadı!</h1>");
+                    } else {
+                        let tableHtml = "<table class='table table-sm table-hover table-striped'> <thead> <th>Şehir Id</th> <th>Şehir</th> <th>Ülke</th> </thead> <tbody>";
+                        tableHtml += `<tr> <td>${data.CityID}</td> <td>${data.CityName}</td> <td>${data.CityCountry}</td></tr> </tbody> </table>`;
+                        $("#contentTable").html(tableHtml);
+                    }
+                }
+            });
+        });
+        $("#btnAddCity").click(() => {
+            let city = {
+                CityName: $("#txtAddCity").val(),
+                CityCountry: $("#txtAddCountry").val(),
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Admin/City/CityAdd",
+                data: city,
+                success: (func) => {
+                    let data = jQuery.parseJSON(func);
+                    console.log(data);
+                    console.log(func);
+                    let tableHtml = "<table class='table table-sm table-hover table-striped'> <thead> <th>Şehir Id</th> <th>Şehir</th> <th>Ülke</th> </thead> <tbody>";
+                    tableHtml += `<tr> <td>${data.CityID}</td> <td>${data.CityName}</td> <td>${data.CityCountry}</td></tr> </tbody> </table>`;
+                    $("#contentTable").html(tableHtml);
+                }
+            });
+        });
+
+        $("#btnDeleteCity").click(function () {
+            var cityID = $("#txtIdCity").val();
+            $.ajax({
+                type: "DELETE",
+                url: "/Admin/City/CityDelete/" + cityID,
+                success: function (func) {
+                    let data = jQuery.parseJSON(func);
+                    let tableHtml = "<table class='table table-sm table-hover table-striped'> <thead> <th>Şehir Id</th> <th>Şehir</th> <th>Ülke</th> </thead> <tbody>";
+                    for (var i = 0; i < data.length; i++) {
+                        tableHtml += `<tr> <td>${data[i].CityID}</td> <td>${data[i].CityName}</td> <td>${data[i].CityCountry}</td></tr>`;
+                    }
+                    tableHtml += "</tbody> </table>";
+                    $("#contentTable").html(tableHtml);
+                }
+            });
+        });
+
+        $("#btnEditCity").click(function () {
+            let cityUpd = {
+                CityID: $("#txtIdCity").val(),
+                CityName: $("#txtAddCity").val(),
+                CityCountry: $("#txtAddCountry").val(),
+            };
+            $.ajax({
+                type:"PUT",
+                url: "/Admin/City/CityUpdate",
+                data: cityUpd,
+                success: (func) => {
+                    let data = jQuery.parseJSON(func);
+                    let tableHtml = "<table class='table table-sm table-hover table-striped'> <thead> <th>Şehir Id</th> <th>Şehir</th> <th>Ülke</th> </thead> <tbody>";
+                    tableHtml += `<tr> <td>${data.CityID}</td> <td>${data.CityName}</td> <td>${data.CityCountry}</td></tr> </tbody> </table>`;
+                    $("#contentTable").html(tableHtml);
+                }
+
+            });
+        });
+    </script>
+}

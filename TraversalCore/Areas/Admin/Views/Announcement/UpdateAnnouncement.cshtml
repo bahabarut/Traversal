@@ -1,0 +1,36 @@
+﻿@model DTOLayer.DTOs.AnnouncementDTOs.AnnouncementUpdateDTO
+@{
+    ViewData["Title"] = "UpdateAnnouncement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post">
+                                <input type="hidden" class="form-control" asp-for="AnnouncementID"  />
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div>
+                                <label for="Title" class="form-label">Duyuru Başlığı</label>
+                                <input type="text" class="form-control" asp-for="Title" id="Title" />
+                                <span class="text-danger" asp-validation-for="Title"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label for="Content" class="form-label">Duyuru Açıklaması</label>
+                                <input type="text" class="form-control" asp-for="Content" id="Content" />
+                                <span class="text-danger" asp-validation-for="Content"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
