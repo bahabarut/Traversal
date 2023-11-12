@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SearchHotelViewModel.Result>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    img {
+        border-radius: 50%;
+    }
+</style>
+
+<div class="card">
+    <div class="table-responsive text-nowrap">
+        <table class="table table-sm table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Resim</th>
+                    <th>Hotel Adı</th>
+                    <th>Hotel Puanı</th>
+                    <th>Hotel Değerlendirmesi</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><img src="@item.photoMainUrl" height="50" width="50" /></td>
+                        <td>@item.name</td>
+                        <td>@item.reviewScore</td>
+                        <td>@item.reviewScoreWord</td>
+                        @* <td><a href="@item.imdb_link">Linke Git</a></td> *@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
