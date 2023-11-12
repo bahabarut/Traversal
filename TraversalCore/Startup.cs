@@ -39,6 +39,9 @@ namespace TraversalCore
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
             // end Identity codes
 
+            //For API requests response process
+            services.AddHttpClient();
+
             services.ContainerDependencies();
             services.CustomValidator();
 

@@ -1,0 +1,43 @@
+﻿@model List<MovieViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    img {
+        border-radius: 50%;
+    }
+</style>
+
+<div class="card">
+    <div class="table-responsive text-nowrap">
+        <table class="table table-sm table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Resim</th>
+                    <th>Film Adı</th>
+                    <th>Puan</th>
+                    <th>Yıl</th>
+                    <th>Film Linki (IMDB)</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.rank</td>
+                        <td><img src="@item.image" height="50" width="50" /></td>
+                        <td>@item.title</td>
+                        <td>@item.rating</td>
+                        <td>@item.year</td>
+                        <td><a href="@item.imdb_link">Linke Git</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

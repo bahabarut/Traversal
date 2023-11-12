@@ -1,0 +1,30 @@
+﻿@model ExchangesViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="table-responsive text-nowrap">
+        <h5 class="card-header">@Model.base_currency - @Model.base_currency_date</h5>
+        <table class="table table-sm table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Döviz</th>
+                    <th>Alış</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model.exchange_rates)
+                {
+                    <tr>
+                        <td>@item.currency</td>
+                        <td>@item.exchange_rate_buy</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
