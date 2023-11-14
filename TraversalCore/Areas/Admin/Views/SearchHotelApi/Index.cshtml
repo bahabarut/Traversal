@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SearchHotelViewModel.Result>
+﻿@* @model IEnumerable<SearchHotelViewModel.Result> *@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -11,29 +11,45 @@
 </style>
 
 <div class="card">
-    <div class="table-responsive text-nowrap">
-        <table class="table table-sm table-hover table-striped">
-            <thead>
-                <tr>
-                    <th>Resim</th>
-                    <th>Hotel Adı</th>
-                    <th>Hotel Puanı</th>
-                    <th>Hotel Değerlendirmesi</th>
-                </tr>
-            </thead>
-            <tbody class="table-border-bottom-0">
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td><img src="@item.photoMainUrl" height="50" width="50" /></td>
-                        <td>@item.name</td>
-                        <td>@item.reviewScore</td>
-                        <td>@item.reviewScoreWord</td>
-                        @* <td><a href="@item.imdb_link">Linke Git</a></td> *@
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <h5 class="card-header">
+        <div>
+            <label for="name" class="form-label">Şehir Giriniz</label>
+            <input type="text" class="form-control" id="txtSearch" />
+            <button class="btn btn-sm btn-outline-info mt-2" id="btnSearch">Ara</button>
+        </div>
+    </h5>
+    <div class="table-responsive text-nowrap" id="content">
     </div>
 </div>
 
+@section AdminScripts{
+    <script>
+        $("#btnSearch").click(() => {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/SearchHotelApi/GetCity",
+                data: { p: $("#txtSearch").val() },
+                success: (func) => {
+                    let data = jQuery.parseJSON(func);
+                    if (data != null) {
+                        var dest = data[0].dest_id.substring(1);
+                        $.ajax({
+                            type: "POST",
+                            url: "/Admin/SearchHotelApi/GetHotels",
+                            data: { destId: dest },
+                            success: function (dt) {
+                                var values = jQuery.parseJSON(dt);
+                                let tableHtml = "<table class='table table-sm table-hover table-striped'><thead><tr> <th>Resim</th> <th>Hotel Adı</th> <th>Hotel Puanı</th><th>Hotel Değerlendirmesi</th></tr></thead><tbody class='table-border-bottom-0'>";
+                                $.each(values.results, (index, val) => {
+                                    tableHtml += `<tr> <td><img src='${val.photoMainUrl}' height='50' width='50'/></td> <td>${val.name}</td> <td>${val.reviewScore}</td> <td>${val.reviewScoreWord}</td> </tr>`;
+                                });
+                                tableHtml += "</tbody> </table>";
+                                $("#content").html(tableHtml);
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+}
