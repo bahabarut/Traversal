@@ -1,0 +1,40 @@
+﻿@model GetDestinationByIdQueryResult
+@{
+    ViewData["Title"] = "GetDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <!-- Basic -->
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post">
+                @* <h5 class="card-header">Basic</h5> *@
+                <div class="card-body">
+                    <div class="row">
+                        <input type="hidden" asp-for="destinationId" />
+                        <div class="col-md-4">
+                            <div>
+                                <label for="city" class="form-label">Şehir</label>
+                                <input type="text" class="form-control" asp-for="city" id="city" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="daynight" class="form-label">Gün-Gece</label>
+                                <input type="text" class="form-control" asp-for="daynight" id="daynight" />
+                            </div>
+                        </div>           
+                        <div class="col-md-4">
+                            <div>
+                                <label for="price" class="form-label">Fiyat</label>
+                                <input type="number" class="form-control" asp-for="price" id="price" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model List<GetAllDestinationQueryResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <h5 class="card-header"><a href="/Admin/DestinationCQRS/AddGuide" class="btn btn-primary">Yeni Destinasyon</a></h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-sm table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Şehir</th>
+                    <th>Gün-Gece</th>
+                    <th>Fiyat</th>
+                    <th>Kapasite</th>
+                    <th>Düzenle</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.city</td>
+                        <td>@item.daynigth</td>
+                        <td>@item.price</td>
+                        <td>@item.capacity</td>
+                        <td><a href="/Admin/DestinationCQRS/GetDestination/@item.id" class="btn btn-sm btn-outline-warning">Düzenle</a></td>
+                        <td><a href="/Admin/DestinationCQRS/UpdateGuide" class="btn btn-sm btn-outline-danger">Sil</a></td>
+                        @* <td><img src="~/wwwroot/guideImages/@item.Image" height="50" width="50" /></td> *@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

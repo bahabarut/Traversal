@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.IO;
+using TraversalCore.CQRS.Handlers.DestinationHandlers;
 using TraversalCore.Models;
 
 namespace TraversalCore
@@ -25,6 +26,10 @@ namespace TraversalCore
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<GetAllDestinationQueryHandler>();
+            services.AddScoped<GetDestinationByIdQueryHandler>();
+
+
             //2 loglama kullanýlacak biri output yani derlenme anýnda console yazýlacak diðer ise text dosyasý Output ekraný
             services.AddLogging(x =>
             {
