@@ -1,0 +1,46 @@
+﻿@model CreateDestinationCommand
+@{
+    ViewData["Title"] = "AddDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <!-- Basic -->
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post">
+                @* <h5 class="card-header">Basic</h5> *@
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div>
+                                <label for="City" class="form-label">Şehir</label>
+                                <input type="text" class="form-control" asp-for="City" id="City" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div>
+                                <label for="DayNight" class="form-label">Gün-Gece</label>
+                                <input type="text" class="form-control" asp-for="DayNight" id="DayNight" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div>
+                                <label for="Price" class="form-label">Fiyat</label>
+                                <input type="number" class="form-control" asp-for="Price" id="Price" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div>
+                                <label for="Capacity" class="form-label">Kapasite</label>
+                                <input type="number" class="form-control" asp-for="Capacity" id="Capacity" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

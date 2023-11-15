@@ -28,6 +28,9 @@ namespace TraversalCore
         {
             services.AddScoped<GetAllDestinationQueryHandler>();
             services.AddScoped<GetDestinationByIdQueryHandler>();
+            services.AddScoped<CreateDestinationCommanHandler>();
+            services.AddScoped<DeleteDestinationCommandHandler>();
+            services.AddScoped<UpdateDestinationCommandHandler>();
 
 
             //2 loglama kullanýlacak biri output yani derlenme anýnda console yazýlacak diðer ise text dosyasý Output ekraný

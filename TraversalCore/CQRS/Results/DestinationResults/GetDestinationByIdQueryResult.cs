@@ -6,5 +6,6 @@
         public string city { get; set; }
         public string daynight { get; set; }
         public int price { get; set; }
+        public int capacity { get; set; }
     }
 }
