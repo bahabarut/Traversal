@@ -2,6 +2,7 @@ using BusinessLayer.Container;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +32,8 @@ namespace TraversalCore
             services.AddScoped<CreateDestinationCommanHandler>();
             services.AddScoped<DeleteDestinationCommandHandler>();
             services.AddScoped<UpdateDestinationCommandHandler>();
+
+            services.AddMediatR(typeof(Startup));
 
 
             //2 loglama kullanýlacak biri output yani derlenme anýnda console yazýlacak diðer ise text dosyasý Output ekraný

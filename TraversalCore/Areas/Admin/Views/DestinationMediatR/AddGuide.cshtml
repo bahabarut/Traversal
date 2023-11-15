@@ -1,0 +1,32 @@
+﻿@model CreateGuideCommand
+@{
+    ViewData["Title"] = "AddGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <label for="Name" class="form-label">Ad Soyad</label>
+                                <input type="text" class="form-control" asp-for="Name" id="Name" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <label for="Desription" class="form-label">Açıklama</label>
+                                <input type="text" class="form-control" asp-for="Desription" id="Desription" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,33 @@
+﻿@model GetGuideByIdQueryResult
+@{
+    ViewData["Title"] = "GetGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post" >
+                <input type="hidden" asp-for="GuideID"/>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div>
+                                <label for="Name" class="form-label">Ad Soyad</label>
+                                <input type="text" class="form-control" asp-for="Name" id="Name" />
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div>
+                                <label for="Description" class="form-label">Açıklama</label>
+                                <input type="text" class="form-control" asp-for="Description" id="Description" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
