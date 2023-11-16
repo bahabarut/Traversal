@@ -11,6 +11,7 @@ namespace DataAccessLayer.Abstract
     public interface ICommentDal : IGenericDal<Comment>
     {
         public List<Comment> GetListWithDestination();
+        public List<Comment> GetListWithAppUserByDestination(int id);
         public List<Comment> TGetListByFilterWithDestination(Expression<Func<Comment, bool>> filter);
     }
 }

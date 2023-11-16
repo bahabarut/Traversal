@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using TraversalCore.Models;
 
 namespace TraversalCore.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -22,7 +24,7 @@ namespace TraversalCore.Controllers
         {
             _logger.LogInformation("Index çağırıldı");
             _logger.LogError("Index çağırıldı");
-            return View();
+            return RedirectToAction("Index","Default");
         }
 
         public IActionResult Privacy()

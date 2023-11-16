@@ -128,7 +128,7 @@ namespace TraversalCore.Areas.Admin.Controllers
         {
             var val = _destinationService.TGetById(id);
             _destinationService.TDelete(val);
-            return RedirectToAction("Index", new { area = "Admin" });
+            return RedirectToAction("Index", "Destination", new { area = "Admin" });
         }
 
         int dayNightSplit(string p, string p2)

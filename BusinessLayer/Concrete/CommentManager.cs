@@ -19,6 +19,11 @@ namespace BusinessLayer.Concrete
             _commentDal = commentDal;
         }
 
+        public List<Comment> GetListWithAppUserByDestination(int id)
+        {
+            return _commentDal.GetListWithAppUserByDestination(id);
+        }
+
         public List<Comment> GetListWithDestination()
         {
             return _commentDal.GetListWithDestination();

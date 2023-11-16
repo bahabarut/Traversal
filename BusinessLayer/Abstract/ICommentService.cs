@@ -11,6 +11,7 @@ namespace BusinessLayer.Abstract
     public interface ICommentService : IGenericService<Comment>
     {
         List<Comment> GetListWithDestination();
+        List<Comment> GetListWithAppUserByDestination(int id);
         List<Comment> TGetListByFilterWithDestination(Expression<Func<Comment, bool>> filter);
     }
 }

@@ -22,7 +22,7 @@
                 {
                     <tr>
                         <td>@item.CommentID</td>
-                        <td>@item.CommentUser</td>
+                        <td>@item.AppUser.Name @item.AppUser.Surname</td>
                         <td>@item.Destination.City</td>
                         <td>@(((DateTime)item.CommentDate).ToString("dd-MMM-yyyy hh:mm"))</td>
                         <td><a href="/Admin/Comment/DeleteComment/@item.CommentID" class="btn btn-sm btn-outline-danger">Sil</a></td>

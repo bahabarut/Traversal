@@ -9,7 +9,8 @@ namespace TraversalCore.ViewComponents.Comment
         public IViewComponentResult Invoke(int id)
         {
             CommentManager cm = new CommentManager(new EfCommentDal());
-            var values = cm.TGetListByFilter(x => x.DestinationID == id);
+            //var values = cm.TGetListByFilter(x => x.DestinationID == id);
+            var values = cm.GetListWithAppUserByDestination(id);
             return View(values);
 
         }

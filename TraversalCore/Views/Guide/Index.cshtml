@@ -1,0 +1,44 @@
+﻿@model List<Guide>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container">
+            <h2 class="title">Rotalar </h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="/Default/Index">Anasayfa</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Rehberler </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="row mx-5">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-6 mt-lg-5 mt-4">
+            <div class="box16">
+                <a href="#url"><img src="~/guideImages/@item.Image" alt="" class="img-fluid" /></a>
+                <div class="box-content">
+                    <h3 class="title"><a href="#url">@item.Name</a></h3>
+                    <span class="post">@item.Description</span>
+                    <ul class="social">
+                        <li>
+                            <a href="#" class="facebook">
+                                <span class="fa fa-facebook-f"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="twitter">
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+</div>
