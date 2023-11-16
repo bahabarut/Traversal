@@ -1,0 +1,50 @@
+﻿@model AccountViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>
+                                <label for="SenderID" class="form-label">Gönderici ID</label>
+                                <select class="form-select" asp-for="SenderID" id="SenderID">
+                                    <option value="0">Gönderici Seçiniz</option>
+                                    @foreach (var item in ViewBag.accounts as List<Account>)
+                                    {
+                                        <option value="@item.AccountID">@item.Name</option>
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <label for="ReceiverID" class="form-label">Alıcı ID</label>
+                                <select class="form-select" asp-items="@ViewBag.accounts2" asp-for="ReceiverID" id="ReceiverID">
+                                    <option value="0">Alıcı Seçiniz</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label for="Amount" class="form-label">Tutar</label>
+                                <input type="number" class="form-control" asp-for="Amount" id="Amount" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
