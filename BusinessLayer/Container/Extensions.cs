@@ -4,10 +4,12 @@ using BusinessLayer.Concrete;
 using BusinessLayer.Concrete.ConcreteUow;
 using BusinessLayer.ValidationRules;
 using BusinessLayer.ValidationRules.AnnouncementValidatorRules;
+using BusinessLayer.ValidationRules.ContactUsValidatorRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFreamework;
 using DataAccessLayer.UnitOfWork;
 using DTOLayer.DTOs.AnnouncementDTOs;
+using DTOLayer.DTOs.ContactDTOs;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -24,6 +26,7 @@ namespace BusinessLayer.Container
         {
             services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator>();
             services.AddTransient<IValidator<AnnouncementUpdateDTO>, AnnouncementUpdateValidator>();
+            services.AddTransient<IValidator<SendMessageDTO>, ContactUsValidator>();
         }
         public static void ContainerDependencies(this IServiceCollection services)
         {
