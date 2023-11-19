@@ -13,7 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTOLayer", "DTOLayer\DTOLayer.csproj", "{0DE87874-3567-4DF5-96D9-A39AC8EDFECB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraversalApiProject", "TraversalApiProject\TraversalApiProject.csproj", "{F5198E90-54CB-4658-96A5-863FEC5BDB52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraversalApiProject", "TraversalApiProject\TraversalApiProject.csproj", "{F5198E90-54CB-4658-96A5-863FEC5BDB52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRApi", "SignalRApi\SignalRApi.csproj", "{C3B93E40-CC30-40FD-9D9E-14E70A7B6F1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRConsume", "SignalRConsume\SignalRConsume.csproj", "{DD4AC25D-8828-46A0-B17D-0821F80D3B65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRApiForSql", "SignalRApiForSql\SignalRApiForSql.csproj", "{BBDA2236-53BA-40AA-BDA2-4DA1B3F043A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{F5198E90-54CB-4658-96A5-863FEC5BDB52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5198E90-54CB-4658-96A5-863FEC5BDB52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5198E90-54CB-4658-96A5-863FEC5BDB52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3B93E40-CC30-40FD-9D9E-14E70A7B6F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3B93E40-CC30-40FD-9D9E-14E70A7B6F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3B93E40-CC30-40FD-9D9E-14E70A7B6F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3B93E40-CC30-40FD-9D9E-14E70A7B6F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD4AC25D-8828-46A0-B17D-0821F80D3B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD4AC25D-8828-46A0-B17D-0821F80D3B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD4AC25D-8828-46A0-B17D-0821F80D3B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD4AC25D-8828-46A0-B17D-0821F80D3B65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBDA2236-53BA-40AA-BDA2-4DA1B3F043A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBDA2236-53BA-40AA-BDA2-4DA1B3F043A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBDA2236-53BA-40AA-BDA2-4DA1B3F043A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBDA2236-53BA-40AA-BDA2-4DA1B3F043A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
