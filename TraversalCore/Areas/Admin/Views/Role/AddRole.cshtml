@@ -1,0 +1,27 @@
+﻿@model DTOLayer.DTOs.RoleDTOs.RoleAddDTO
+@{
+    ViewData["Title"] = "AddRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <label for="name" class="form-label">Rol Adı</label>
+                                <input type="text" class="form-control" asp-for="name" id="name" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

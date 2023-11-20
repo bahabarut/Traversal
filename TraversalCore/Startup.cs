@@ -70,6 +70,11 @@ namespace TraversalCore
             });
 
             services.AddMvc();
+
+            // kullanýcý giriþ yapmadýysa yönlendirilecek adres
+            services.ConfigureApplicationCookie(options => {
+                options.LoginPath = "/Login/SignIn";
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
