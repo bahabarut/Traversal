@@ -26,6 +26,9 @@ namespace TraversalCore.Areas.Admin.Models
 
         [Required(ErrorMessage = "Bu Alan Boş Geçilemez!")]
         public int capacity { get; set; }
+
+        [Required(ErrorMessage = "Bu Alan Boş Geçilemez!")]
+        [MinLength(100, ErrorMessage = "Bu Alan Minimum 100 Karakter Olamlı!")]
         public string details1 { get; set; }
         public string details2 { get; set; }
     }

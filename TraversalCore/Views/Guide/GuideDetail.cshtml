@@ -1,0 +1,35 @@
+﻿@model Guide
+@{
+    ViewData["Title"] = "GuideDetail";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-2">
+            <h2 class="title">About Us</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="#url">Anasayfa</a></li>
+                <li><a href="#url"><span class="fa fa-arrow-right mx-2" aria-hidden="true">Rehberler</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> @Model.Name </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+<!-- /about-6-->
+<section class="w3l-cta4 py-5">
+    <div class="container py-lg-5">
+        <div class="ab-section text-center">
+            <h3 class="hny-title">@Model.Name</h3>
+            <p class="py-3 mb-3">@Model.Description</p>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-9 mx-auto">
+                <img src="~/guideImages/@Model.Image" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //about-6-->

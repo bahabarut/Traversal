@@ -24,6 +24,11 @@ namespace BusinessLayer.Concrete
             return _destinationDal.GetDestinationByIdWithGuide(id);
         }
 
+        public List<Destination> Last4Destination()
+        {
+            return _destinationDal.Last4Destination();
+        }
+
         public void TAdd(Destination t)
         {
             _destinationDal.Insert(t);

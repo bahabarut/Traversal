@@ -25,7 +25,6 @@ namespace TraversalCore.Areas.Member.Controllers
 
         public async Task<IActionResult> MyCurrentReservation()
         {
-            TempData["breadcrumbTitle"] = "Aktif Rezervasyonlarım";
             var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
             var values = rm.TGetListByFilterWithDestination(x => x.AppUserID == currentUser.Id && x.Status == "Işlem Yapıldı");
             return View(values);
@@ -33,14 +32,12 @@ namespace TraversalCore.Areas.Member.Controllers
 
         public async Task<IActionResult> MyOldReservation()
         {
-            TempData["breadcrumbTitle"] = "Geçmiş Rezervasyonlarım";
             var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
             var values = rm.TGetListByFilterWithDestination(x => x.AppUserID == currentUser.Id && x.Status == "Geçmiş Rezervasyon");
             return View(values);
         }
         public async Task<IActionResult> MyApprovalReservation()
         {
-            TempData["breadcrumbTitle"] = "Onay Bekleyen Rezervasyonlarım";
             var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
             var values = rm.TGetListByFilterWithDestination(x => x.AppUserID == currentUser.Id && x.Status == "Onay Bekliyor");
             return View(values);
@@ -48,7 +45,6 @@ namespace TraversalCore.Areas.Member.Controllers
         [HttpGet]
         public IActionResult NewReservation()
         {
-            TempData["breadcrumbTitle"] = "Yeni Rezervasyon";
             ViewBag.destinations = GetDestinations();
             return View();
         }
@@ -58,7 +54,7 @@ namespace TraversalCore.Areas.Member.Controllers
             p.AppUserID = 1;
             p.Status = "Onay Bekliyor";
             rm.TAdd(p);
-            return RedirectToAction("MyCurrentReservation", "Reservation", new { area = "Member" });
+            return RedirectToAction("MyApprovalReservation", "Reservation", new { area = "Member" });
         }
 
         List<SelectListItem> GetDestinations()

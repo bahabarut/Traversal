@@ -22,7 +22,6 @@ namespace TraversalCore.Areas.Member.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            TempData["breadcrumbTitle"] = "Profile Edit";
             var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
             UserEditViewModel user = new UserEditViewModel()
             {

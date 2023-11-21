@@ -19,5 +19,10 @@ namespace TraversalCore.Controllers
             var values = _guideService.TGetList();
             return View(values);
         }
+        public IActionResult GuideDetail(int id)
+        {
+            var values = _guideService.TGetById(id);
+            return View(values);
+        }
     }
 }
