@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -45,6 +46,8 @@ namespace TraversalCore
             });
 
 
+
+
             //this code for Identity
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
@@ -69,10 +72,20 @@ namespace TraversalCore
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            services.AddMvc();
+
+            //localization & globalization
+            services.AddLocalization(opt =>
+            {
+                // dil resourch dosyalarýný hangi klasörde arayacaðýný belirtiyoruz 
+                //Resources klasörü içinde ki Views içindeki klasör dil desteði kullacanðýmýz sayfaýný controlleru ile ayný isimde olmalý
+                opt.ResourcesPath = "Resources";
+            });
+
+            services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 
             // kullanýcý giriþ yapmadýysa yönlendirilecek adres
-            services.ConfigureApplicationCookie(options => {
+            services.ConfigureApplicationCookie(options =>
+            {
                 options.LoginPath = "/Login/SignIn";
             });
         }
@@ -102,6 +115,11 @@ namespace TraversalCore
 
             app.UseAuthorization();
 
+            var supportedCultures = new[] { "en", "tr", "de" };
+            //setDefaultCultures hangisini baz alacaðýný belirtiyoruz burda en belirttik
+            var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[1]).AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+            app.UseRequestLocalization(localizationOptions);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -119,3 +137,19 @@ namespace TraversalCore
         }
     }
 }
+
+
+
+// Language Localization 
+//builder.Services.AddLocalization(opt =>
+//{
+//    opt.ResourcesPath = "Resources";
+//});
+
+//builder.Services.Configure<RequestLocalizationOptions>(options =>
+//{
+//    options.SetDefaultCulture("fr");
+//    options.AddSupportedUICultures("tr", "en", "fr");
+//    options.FallBackToParentUICultures = true;
+//    options.RequestCultureProviders.Clear();
+//});
