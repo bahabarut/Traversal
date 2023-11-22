@@ -6,10 +6,12 @@ using Newtonsoft.Json;
 using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using TraversalCore.Areas.Admin.Models;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TraversalCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class MovieApiController : Controller
     {
         public async Task<IActionResult> Index()

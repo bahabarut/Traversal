@@ -3,6 +3,7 @@ using BusinessLayer.Abstract;
 using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using DTOLayer.DTOs.AnnouncementDTOs;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using TraversalCore.Mapping.AutoMapperProfile;
 namespace TraversalCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     [Route("Admin/[controller]/[action]/{id?}")]
     public class AnnouncementController : Controller
     {

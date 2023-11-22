@@ -19,6 +19,11 @@ namespace BusinessLayer.Concrete
             _aboutDal = aboutDal;
         }
 
+        public About GetAbout()
+        {
+            return _aboutDal.GetAbout();
+        }
+
         public void TAdd(About t)
         {
             _aboutDal.Insert(t);

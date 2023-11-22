@@ -4,10 +4,12 @@ using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TraversalCore.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TraversalCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class SearchHotelApiController : Controller
     {
 

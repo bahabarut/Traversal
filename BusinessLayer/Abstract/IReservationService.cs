@@ -11,5 +11,7 @@ namespace BusinessLayer.Abstract
     public interface IReservationService : IGenericService<Reservation>
     {
         List<Reservation> TGetListByFilterWithDestination(Expression<Func<Reservation, bool>> filter);
+        List<Reservation> GetResrevationsWithUserDestination();
+        Reservation GetReservationWithUserDestination(int id);
     }
 }

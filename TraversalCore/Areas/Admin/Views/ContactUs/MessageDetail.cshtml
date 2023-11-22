@@ -1,0 +1,14 @@
+﻿@model ContactUs
+@{
+    ViewData["Title"] = "MessageDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card p-3">
+    <h5 class="card-title">@Model.Name - @Model.Mail</h5>
+    <h6 class="card-subtitle text-muted">@Model.Subject - @(((DateTime)Model.MessageDate).ToString("yyyy.MM.dd hh:mm"))</h6>
+    <hr />
+    <div class="card-body">
+        <p class="card-text">@Model.MessageBody</p>
+    </div>
+</div>

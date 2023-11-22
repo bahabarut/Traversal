@@ -11,5 +11,7 @@ namespace DataAccessLayer.Abstract
     public interface IReservationDal : IGenericDal<Reservation>
     {
         List<Reservation> TGetListByFilterWithDestination(Expression<Func<Reservation, bool>> filter);
+        List<Reservation> GetReservationsWithUserDestination();
+        Reservation GetReservationWithUserDestination(int id);
     }
 }

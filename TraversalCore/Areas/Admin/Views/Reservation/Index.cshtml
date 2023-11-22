@@ -1,0 +1,51 @@
+﻿@model List<Reservation>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="table-responsive text-nowrap">
+        <table class="table table-sm table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Ad Soyad</th>
+                    <th>Tur Bilgiler</th>
+                    <th>Tarih</th>
+                    <th>Kişi Sayısı</th>
+                    <th>Durum</th>
+                    <th>Detaylar</th>
+                    <th>işlem</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>@item.AppUser.Name @item.AppUser.Surname</th>
+                        <th>@item.Destination.City @item.Destination.Price ₺</th>
+                        <td>@(((DateTime)item.ReservatioDate).ToString("dd-MM-yyyy"))</td>
+                        <td>@item.PersonCount</td>
+                        <td>@item.Status</td>
+                        <td><a href="/Admin/Reservation/ReservationDetail/@item.ReservationID" class="btn btn-sm btn-outline-info">Detaylar</a></td>
+                        @if (item.Status == "Onay Bekliyor" || item.Status == "Geçmiş Rezervasyon")
+                        {
+
+                            <td><a href="/Admin/Reservation/Approve/@item.ReservationID" class="btn btn-sm btn-outline-success">Onayla</a></td>
+                        }
+                        else if (item.Status == "Onaylandı")
+                        {
+                            <td><a href="/Admin/Reservation/Reject/@item.ReservationID" class="btn btn-sm btn-outline-dark">Reddet</a></td>
+
+                        }
+                        <td><a href="/Admin/Reservation/DeleteReservation/@item.ReservationID" class="btn btn-sm btn-outline-danger">Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

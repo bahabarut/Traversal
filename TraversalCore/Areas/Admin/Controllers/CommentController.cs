@@ -1,12 +1,14 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFreamework;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/[controller]/[action]/{id?}")]
+    [Authorize(Roles = "Admin")]
     public class CommentController : Controller
     {
         private readonly ICommentService _commentService;

@@ -1,0 +1,52 @@
+﻿@model UpdateGuideViewModel
+@{
+    ViewData["Title"] = "UpdateGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="id" />
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <label for="name" class="form-label">Ad Soyad</label>
+                                <input type="text" class="form-control" asp-for="name" id="name" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="twitter" class="form-label">Twitter URL</label>
+                                <input type="text" class="form-control" asp-for="twitter" id="twitter" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label for="instagram" class="form-label">Instagram URL</label>
+                                <input type="text" class="form-control" asp-for="instagram" id="instagram" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <label for="description" class="form-label">Açıklama</label>
+                                <input type="text" class="form-control" asp-for="description" id="description" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <label for="image" class="form-label">Resim</label>
+                                <input type="file" class="form-control" asp-for="image" id="image" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

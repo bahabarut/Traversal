@@ -2,6 +2,7 @@
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFreamework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System;
@@ -12,6 +13,7 @@ namespace TraversalCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/[controller]/[action]/{id?}")]
+    [Authorize(Roles = "Admin")]
     public class DestinationController : Controller
     {
         private readonly IDestinationService _destinationService;

@@ -24,7 +24,7 @@
                         <td>@item.Name - @item.Mail</td>
                         <td>@item.Subject</td>
                         <td>@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy hh:mm"))</td>
-                        <td><a href="/Admin/Guide/UpdateGuide/" class="btn btn-sm btn-outline-info">Mesajı Aç</a></td>
+                        <td><a href="/Admin/ContactUs/MessageDetail/@item.ContactUsID" class="btn btn-sm btn-outline-info">Mesajı Aç</a></td>
                         <td><a href="/Admin/ContactUs/ChangeToFalse/@item.ContactUsID" class="btn btn-sm btn-outline-danger">Sil</a></td>
                     </tr>
                 }

@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract.AbstractUow;
 using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using TraversalCore.Areas.Admin.Models;
 namespace TraversalCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         private readonly IAccountService _accountService;
@@ -49,7 +51,7 @@ namespace TraversalCore.Areas.Admin.Controllers
 
         List<SelectListItem> GetAccounts()
         {
-           List<SelectListItem> items = (from x in _accountService.TGetList() select new SelectListItem { Text = x.Name, Value = x.AccountID.ToString() }).ToList();
+            List<SelectListItem> items = (from x in _accountService.TGetList() select new SelectListItem { Text = x.Name, Value = x.AccountID.ToString() }).ToList();
             return items;
         }
     }

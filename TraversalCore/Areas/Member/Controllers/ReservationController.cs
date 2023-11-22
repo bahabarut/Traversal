@@ -26,7 +26,7 @@ namespace TraversalCore.Areas.Member.Controllers
         public async Task<IActionResult> MyCurrentReservation()
         {
             var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
-            var values = rm.TGetListByFilterWithDestination(x => x.AppUserID == currentUser.Id && x.Status == "Işlem Yapıldı");
+            var values = rm.TGetListByFilterWithDestination(x => x.AppUserID == currentUser.Id && x.Status == "Onaylandı");
             return View(values);
         }
 

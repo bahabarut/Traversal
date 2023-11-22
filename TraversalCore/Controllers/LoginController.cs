@@ -69,12 +69,23 @@ namespace TraversalCore.Controllers
             {
                 var result = await _signInManager.PasswordSignInAsync(p.username, p.password, false, true);
                 if (result.Succeeded)
+                {
                     return RedirectToAction("Index", "Profile", new { area = "Member" });
+                }
                 else
+                {
                     return RedirectToAction("SignIn", "Login");
+                }
 
             }
             return View();
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("SignIn");
         }
     }
 }

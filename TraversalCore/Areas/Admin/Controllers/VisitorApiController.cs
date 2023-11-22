@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace TraversalCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/[controller]/[action]/{id?}")]
+    [Authorize(Roles = "Admin")]
     public class VisitorApiController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

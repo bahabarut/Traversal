@@ -19,6 +19,16 @@ namespace BusinessLayer.Concrete
             _reservationDal = reservationDal;
         }
 
+        public Reservation GetReservationWithUserDestination(int id)
+        {
+            return _reservationDal.GetReservationWithUserDestination(id);
+        }
+
+        public List<Reservation> GetResrevationsWithUserDestination()
+        {
+            return _reservationDal.GetReservationsWithUserDestination();
+        }
+
         public void TAdd(Reservation t)
         {
             _reservationDal.Insert(t);

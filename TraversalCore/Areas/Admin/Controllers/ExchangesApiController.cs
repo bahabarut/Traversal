@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using TraversalCore.Areas.Admin.Models;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TraversalCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ExchangesApiController : Controller
     {
         public async Task<IActionResult> Index()

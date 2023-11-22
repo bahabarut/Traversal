@@ -30,7 +30,7 @@
                 <li class="nav-item mr-auto">
                     <a class="navbar-brand" href="index.html">
                         <img class="brand-logo" alt="Chameleon admin logo" src="~/traversalMember/theme-assets/images/logo/logo.png" />
-                        <h3 class="brand-text">Chameleon</h3>
+                        <h3 class="brand-text">Traversal</h3>
                     </a>
                 </li>
                 <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
@@ -60,8 +60,14 @@
                     <a href="/Member/Reservation/NewReservation"><i class="ft-plus"></i><span class="menu-title" data-i18n="">@localizer["newRez"]</span></a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.html"><i class="ft-log-out"></i><span class="menu-title" data-i18n="">@localizer["logout"]</span></a>
+                    <a href="/Login/Logout"><i class="ft-log-out"></i><span class="menu-title" data-i18n="">@localizer["logout"]</span></a>
                 </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a href="/Admin/Dashboard/Index"><i class="ft-user-check"></i><span class="menu-title" data-i18n="">Admin</span></a>
+                    </li>
+                }
             </ul>
         </div>
         <div class="navigation-background"></div>
