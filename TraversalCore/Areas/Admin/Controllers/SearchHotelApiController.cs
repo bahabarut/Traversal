@@ -38,8 +38,6 @@ namespace TraversalCore.Areas.Admin.Controllers
                 var body = await response.Content.ReadAsStringAsync();
                 return Json(body);
             }
-
-
         }
 
         public async Task<IActionResult> GetHotels(string destId)

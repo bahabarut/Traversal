@@ -129,6 +129,9 @@
   <data name="logout" xml:space="preserve">
     <value>Çıkış Yap</value>
   </data>
+  <data name="myComment" xml:space="preserve">
+    <value>Yorumlarım</value>
+  </data>
   <data name="myProfile" xml:space="preserve">
     <value>Profilim</value>
   </data>

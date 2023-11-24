@@ -1,8 +1,87 @@
-﻿
+﻿@model List<Comment>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
-<h1>this is COMMENT page</h1>
-
+<div class="content-header row">
+    <div class="content-header-left col-md-4 col-12 mb-2">
+        <h3 class="content-header-title">Yorumlarım</h3>
+    </div>
+    <div class="content-header-right col-md-8 col-12">
+        <div class="breadcrumbs-top float-md-right">
+            <div class="breadcrumb-wrapper mr-1">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Anasayfa</a>
+                    </li>
+                    <li class="breadcrumb-item active">Yorumlarım</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-body">
+    <!-- Basic Tables start -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    @* <h4 class="card-title">Buttonalar yeri</h4> *@
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                            <li><a data-action="close"><i class="ft-x"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            @if (@Model.Count() >= 1)
+                            {
+                                <table class="table table-sm table-hover table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Yorum</th>
+                                            <th>Tarih</th>
+                                            <th>Rota</th>
+                                            <th>Sil</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                @if (item.CommentContent.Length > 40)
+                                                {
+                                                    <td>@item.CommentContent.Substring(1,40)...</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>@item.CommentContent</td>
+                                                }
+                                                <td>@(((DateTime)item.CommentDate).ToString("dd-MM-yyyy hh:mm"))</td>
+                                                <td>@item.Destination.City</td>
+                                                <td>
+                                                    <a href="/Member/Comment/DeleteComment/@item.CommentID" class="btn btn-outline-danger btn-sm font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Sil">Sil</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <h1 class="text-center p-2">Kayıt Bulunamadı...</h1>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

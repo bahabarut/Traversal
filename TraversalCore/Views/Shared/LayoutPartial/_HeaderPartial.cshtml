@@ -37,12 +37,21 @@
                     </li>
 
                 </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="alert alert-success m t-3 mr-2 mb-0 p-1">Hoş Geldiniz @User.Identity.Name</div>
+                }
             </div>
             <div class="d-lg-block d-none">
-                <a href="/Member/Reservation/NewReservation" class="btn btn-style btn-secondary">Rezervasyon Yap</a>
+                <a href="/Member/Reservation/NewReservation" class="btn btn-sm btn-secondary">Rezervasyon Yap</a>
                 @if (!User.Identity.IsAuthenticated)
                 {
-                    <a href="/Login/SignIn" class="btn btn-style btn-warning">Giriş Yap</a>
+                    <a href="/Login/SignIn" class="btn btn-sm btn-warning">Giriş Yap</a>
+                }
+                else
+                {
+                    <a href="/Member/Dashboard/Index" class="btn btn-sm btn-warning">Panele Git</a>
+
                 }
             </div>
             <div class="mobile-position">

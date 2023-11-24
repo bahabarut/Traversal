@@ -129,6 +129,9 @@
   <data name="logout" xml:space="preserve">
     <value>Ausloggen</value>
   </data>
+  <data name="myComment" xml:space="preserve">
+    <value>meine Kommentare</value>
+  </data>
   <data name="myProfile" xml:space="preserve">
     <value>mein Profil</value>
   </data>
