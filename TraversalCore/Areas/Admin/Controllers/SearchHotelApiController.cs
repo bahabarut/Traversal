@@ -15,6 +15,7 @@ namespace TraversalCore.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
+            TempData["adminBreadcrumb"] = "Booking API Hotel Listesi";
             return View();
         }
 
@@ -42,7 +43,6 @@ namespace TraversalCore.Areas.Admin.Controllers
 
         public async Task<IActionResult> GetHotels(string destId)
         {
-            TempData["adminBreadcrumb"] = "Booking API Hotel Listesi";
             var client = new HttpClient();
             string destid = destId;
             var request = new HttpRequestMessage
